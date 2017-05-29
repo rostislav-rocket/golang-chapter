@@ -69,12 +69,12 @@ func main() {
 		var body = getGooglePlaceById(id, apiKey)
 		err := json.Unmarshal(body, &r)
 		if err != nil {
-			fmt.Println("whoops:", err)
+			log.Fatal(err)
 		}
 
 		text, err := json.Marshal(r.Result)
 		if err != nil {
-			fmt.Println("error:", err)
+			log.Fatal(err)
 		}
 
 		saveToFile(fileName, string(text))
@@ -114,12 +114,12 @@ func saveToFile(fileName string, text string) {
 
 	f, err := os.OpenFile(fileName, os.O_APPEND|os.O_WRONLY, 0600)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	defer f.Close()
 
 	if _, err = f.WriteString(text); err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 }

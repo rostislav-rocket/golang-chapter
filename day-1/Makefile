@@ -1,5 +1,5 @@
-NAME=golang-chpter
-SOURCE=day-1/main.go
+NAME=day-1
+SOURCE=main.go
 
 all: clean depend build
 
